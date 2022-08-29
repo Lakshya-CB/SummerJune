@@ -177,7 +177,6 @@ class BTree {
 		root = new Node(scn.nextInt());
 		Queue<Node> Q = new LinkedList<Node>();
 		Q.add(root);
-		int idx = 1;
 		while (!Q.isEmpty()) {
 			Node curr = Q.poll();
 			int L = scn.nextInt();
@@ -185,14 +184,11 @@ class BTree {
 				curr.left = new Node(L);
 				Q.add(curr.left);
 			}
-			idx++;
 			int R = scn.nextInt();
 			if (R != -1) {
 				curr.right = new Node(R);
 				Q.add(curr.right);
 			}
-			idx++;
-
 		}
 
 	}
