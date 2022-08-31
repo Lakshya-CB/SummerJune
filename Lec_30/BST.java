@@ -111,7 +111,7 @@ public class BST {
 	}
 
 	private Node delete(Node nn, int ali) {
-		if(nn==null) {
+		if (nn == null) {
 			return nn;
 		}
 		// TODO Auto-generated method stub
@@ -147,4 +147,35 @@ public class BST {
 		return 0;
 	}
 
+	class NLpair {
+		public NLpair(Node pp, int i) {
+			// TODO Auto-generated constructor stub
+			nn = pp;
+			lvl = i;
+		}
+
+		Node nn;
+		int lvl;
+	}
+
+	public void lvlChange() {
+		Queue<NLpair> Q = new LinkedList<NLpair>();
+		Q.add(new NLpair(root, 0));
+		int prev_lvl =0;
+		while (!Q.isEmpty()) {
+			NLpair curr = Q.poll();
+			if(curr.lvl!=prev_lvl) {
+				System.out.println();
+			}
+			System.out.print(curr.nn.data+" ");
+			if (curr.nn.left != null) {
+				Q.add(new NLpair(curr.nn.left, curr.lvl + 1));
+			}
+			if (curr.nn.right != null) {
+				Q.add(new NLpair(curr.nn.right, curr.lvl + 1));
+			}
+			prev_lvl = curr.lvl;
+		}
+
+	}
 }
